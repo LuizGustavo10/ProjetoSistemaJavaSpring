@@ -28,6 +28,7 @@ public class Funcionario implements Serializable{
 	@Temporal(TemporalType.DATE) //SÓ ARMAZENO A DATA
 	private Date dataSaida;
 	private String logradouro;
+	private String cargo;
 	private String numero;
 	private String complemento;
 	private String bairro;
@@ -99,6 +100,12 @@ public class Funcionario implements Serializable{
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	public String getCargo() {
+		return cargo;
+	}
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 	
 	
