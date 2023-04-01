@@ -89,7 +89,7 @@
 	                        </li>
 	                    </ul>
 	                </div>
-	                <a class="btn btn-primary btn-md" href="/funcionarios/listar" role="button">
+	                <a class="btn btn-primary btn-md" href="/administrativo/funcionarios/listar" role="button">
 	                    <span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
 	                    <span>Listar Funcionários</span>
 	                </a>
@@ -97,12 +97,14 @@
 	        </div>
 	
 	        <div class="container" id="cadastro">
-	            <form action="/administrativo/funcionarios/salvar" method="POST">
+	        
+	            <form action="/administrativo/funcionarios/salvar" th:object="${funcionario}" method="POST">
+	            
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="nome">Nome do Funcionário</label>
 	                        <input type="text" class="form-control" id="nome" placeholder="Nome Completo"
-	                               autofocus="autofocus" name="nome" value=""/>
+	                               autofocus="autofocus" th:field="*{nome}" value=""/>
 	                        <div class="invalid-feedback">
 	
 	                        </div>
@@ -110,7 +112,7 @@
 	                   <div class="form-group col-md-6">
 	                        <label for="salario">Salário Bruto</label>
 	                        <input type="text" class="form-control" id="salarioBruto" 
-	                               data-mask-reverse="true" name="salarioBruto" value=""/>
+	                               data-mask-reverse="true" th:field="*{salarioBruto}" value=""/>
 	                        <div class="invalid-feedback">
 	
 	                        </div>
@@ -137,7 +139,7 @@
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="cargo">Cargo</label>
-	                        <select id="cargo" class="form-control" name="cargo">
+	                        <select id="cargo" class="form-control" th:field="*{cargo}">
 	                            <option value="">Selecione...</option>
 	                            <option value="1">Auxiliar Contábil</option>
 	                            <option value="2">Auxiliar Administrativo</option>
@@ -159,7 +161,7 @@
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="cidade">Cidade</label>
-	                        <input type="text" class="form-control" id="cidade" name="cidade" value=""/>
+	                        <input type="text" class="form-control" id="cidade" th:field="*{cidade}" value=""/>
 	                        <div class="invalid-feedback">
 	
 	                        </div>
@@ -167,7 +169,7 @@
 	                    <div class="form-group col-md-6">
 	                        <label for="logradouro">Logradouro</label>
 	                        <input type="text" class="form-control" id="logradouro" placeholder="logradouro sem número"
-	                               name="logradouro" value=""/>
+	                               th:field="*{logradouro}" value=""/>
 	                        <div class="invalid-feedback">
 	
 	                        </div>
@@ -176,7 +178,7 @@
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="numero">Número</label>
-	                        <input type="text" class="form-control" id="numero" name="numero" value=""/>
+	                        <input type="text" class="form-control" id="numero" th:field="*{numero}" value=""/>
 	                        <div class="invalid-feedback">
 	
 	                        </div>
@@ -184,7 +186,7 @@
 	                    <div class="form-group col-md-6">
 	                        <label for="complemento">Complemento</label>
 	                        <input type="text" class="form-control" id="complemento" placeholder="fundos, casa, AP. 102, .."
-	                               name="complemento" value=""/>
+	                               th:field="*{complemento}" value=""/>
 	                        <div class="invalid-feedback">
 	
 	                        </div>
@@ -193,14 +195,14 @@
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="bairro">Bairro</label>
-	                        <input type="text" class="form-control" id="bairro" name="bairro" value=""/>
+	                        <input type="text" class="form-control" id="bairro" th:field="*{bairro}" value=""/>
 	                        <div class="invalid-feedback">
 	
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-md-4">
 	                        <label for="uf">UF</label>
-	                        <select id="uf" class="form-control" name="uf">
+	                        <select id="uf" class="form-control" th:field="*{uf}">
 	                            <option value="">Selecione...</option>
 	                            <option value="AC">AC</option>
 	                            <option value="AL">AL</option>
@@ -235,7 +237,7 @@
 	                    </div>
 	                    <div class="form-group col-md-2">
 	                        <label for="cep">Cep</label>
-	                        <input type="text" class="form-control" id="cep" data-mask="00000-000" name="cep"
+	                        <input type="text" class="form-control" id="cep" data-mask="00000-000"  th:field="*{cep}"
 	                               value=""/>
 	                        <div class="invalid-feedback">
 	
@@ -246,7 +248,7 @@
 	                
 	                
 	                
-	                <input type="hidden" id="id" name="id" value=""/>
+	                <input type="hidden" id="id"  th:field="*{id}" value=""/>
 	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 	            </form>
 	        </div>

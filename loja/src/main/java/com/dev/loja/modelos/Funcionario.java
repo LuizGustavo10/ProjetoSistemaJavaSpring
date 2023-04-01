@@ -15,7 +15,9 @@ import jakarta.persistence.TemporalType;
 @Table(name="funcionario")
 public class Funcionario implements Serializable{
 	
-	
+//	public Funcionario() {
+//		super();
+//	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +29,7 @@ public class Funcionario implements Serializable{
 	private Date dataEntrada;
 	@Temporal(TemporalType.DATE) //SÓ ARMAZENO A DATA
 	private Date dataSaida;
+	private String cidade;
 	private String logradouro;
 	private String cargo;
 	private String numero;
@@ -106,6 +109,12 @@ public class Funcionario implements Serializable{
 	}
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 	
 	
