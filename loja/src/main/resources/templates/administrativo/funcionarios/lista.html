@@ -1,85 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <title>Spring-Boot Básico</title>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+  layout:decorate="~{administrativo/fragments/layout}">
 
-    <!-- Bootstrap core CSS -->
-    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet"/>
-    
-    <!-- Custom styles for this template -->
-    <link href="/css/style.css" rel="stylesheet"/>
+
+<head>
+	<title>Lista Funcionário</title>
+	<meta charset="utf-8">
 </head>
-<body>
-	<!-- Cabeçalho -->
-	<header>
-		<nav class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="btn btn-dark navbar-toggle pull-left">
-						<i class="oi oi-menu"></i>
-					</button>
-					<a class="navbar-brand navbar-toggle pull-left" href="#">Curso Spring Boot</a>
-				</div>
-			</div>
-		</nav>
-	</header>
-	
-	<div class="layout-main">
-		<!-- Menu Lateral -->
-	    <aside>
-	        <nav class="sidebar  sidebar-open">
-	            <ul class="nav nav-pills">
-	                <li class="nav-item">
-	                	<a class="nav-link " href="/"> <i class="oi oi-home"></i> <span>Home</span></a>
-	                </li>
-	            </ul>
-	
-	            <ul class="nav nav-pills">
-	                <li class="nav-item">
-	                	<span class="nav-link active">Departamentos</span>
-	                </li>
-	                <li class="nav-item"><a class="nav-link" href="/departamentos/cadastrar"> 
-	                	<i class="oi oi-plus"></i> <span>Cadastrar</span></a>
-	                </li>
-	                <li class="nav-item"><a class="nav-link" href="/departamentos/listar">
-	                	<i class="oi oi-spreadsheet"></i><span>Listar </span>
-	                </a></li>
-	            </ul>
-	
-	            <ul class="nav nav-pills">
-	                <li class="nav-item"><span class="nav-link active">Cargos</span></li>
-	                <li class="nav-item">
-		                <a class="nav-link" href="/cargos/cadastrar"> 
-		                	<i class="oi oi-plus"></i> <span>Cadastrar </span>
-		                </a>
-	                </li>
-	                <li class="nav-item"><a class="nav-link"
-	                                        href="/cargos/listar"> <i
-	                        class="oi oi-spreadsheet"></i> <span>Listar </span>
-	                </a></li>
-	            </ul>
-	
-	            <ul class="nav nav-pills">
-	                <li class="nav-item"><span class="nav-link active">Funcionários</span></li>
-	                <li class="nav-item"><a class="nav-link" href="/funcionarios/cadastrar"> <i class="oi oi-plus"></i>
-	                    <span>Cadastrar </span>
-	                </a></li>
-	                <li class="nav-item"><a class="nav-link" href="/funcionarios/listar"> <i class="oi oi-spreadsheet"></i>
-	                    <span>Listar </span>
-	                </a></li>
-	            </ul>
-	        </nav>
-	    </aside>
-	
-		
-	    <section class="layout-content">
+
+	    <section class="layout-content" layout:fragment="corpo">
 	        <nav class="navbar navbar-expand-md bg-light">
 	            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 	                <ul class="navbar-nav mr-auto">
@@ -197,9 +126,29 @@
 	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 	                            </a>
 	                            
-	                            <a class="btn btn-danger btn-sm" th:href="@{/administrativo/funcionarios/remover/{id}(id=${funcionario.id})}" role="button">
-	                                 <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+	                         
+	                            <a class="btn btn-danger btn-sm"data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#modal-warning'+${funcionario.id}">
+	                            	 <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 	                            </a>
+	                            
+	                            <div class="modal modal-warning fade in" th:id="modal-warning+${funcionario.id}" >
+								    <div class="modal-dialog">
+								        <div class="modal-content">
+								            <div class="modal-header">
+								                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								                    <span aria-hidden="true">×</span></button>
+								                <h5 class="modal-title">Tela de remoção</h5>
+								            </div>
+								            <div class="modal-body">
+								                <h3>Deseja realmente remover?</h3>
+								            </div>
+								            <div class="modal-footer">
+								                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Fechar</button>
+								                <a type="button" class="btn btn-outline" th:href="@{/administrativo/funcionarios/remover/{id}(id=${funcionario.id})}" role="button"><i class="fa fa-check"></i>&nbsp;Sim</a>
+								            </div>
+								        </div>
+								    </div>
+								</div>
 	                            
 	                           
 	                        </td>
@@ -214,33 +163,6 @@
 	        </div>
 	    </section>
 
-	</div>
 	
-    <footer class="layout-footer">
-        <div class="container">
-            <span class="footer-copy">&copy; 2018 MBallem. Todos os direitos reservados.</span>
-        </div>
-    </footer>	
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="/webjars/jquery/jquery.min.js"></script>
-<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-
-    $(function () {
-        $('[data-toggle="popover"]').popover();
-    });
-    
-	$(document).ready(function(){
-	    $(".navbar-toggle").click(function(){
-	        $(".sidebar").toggleClass("sidebar-open");
-	    })
-	});
-
-</script>
 </body>
 </html>		
