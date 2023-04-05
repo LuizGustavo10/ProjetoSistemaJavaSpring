@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -29,13 +30,13 @@ public class Funcionario implements Serializable{
 	private Date dataEntrada;
 	@Temporal(TemporalType.DATE) //SÓ ARMAZENO A DATA
 	private Date dataSaida;
-	private String cidade;
+	@ManyToOne
+	private Cidade cidade;
 	private String logradouro;
 	private String cargo;
 	private String numero;
 	private String complemento;
 	private String bairro;
-	private String uf;
 	private String cep;
 	
 	public Long getId() {
@@ -92,11 +93,11 @@ public class Funcionario implements Serializable{
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	public String getUf() {
-		return uf;
+	public Cidade getCidade() {
+		return cidade;
 	}
-	public void setUf(String uf) {
-		this.uf = uf;
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 	public String getCep() {
 		return cep;
@@ -109,12 +110,6 @@ public class Funcionario implements Serializable{
 	}
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
 	}
 	
 	

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dev.loja.modelos.Funcionario;
+import com.dev.loja.repositorio.CidadeRepositorio;
 import com.dev.loja.repositorio.FuncionarioRepositorio;
 
 @Controller
@@ -18,11 +19,14 @@ public class FuncionarioControle {
 	
 	@Autowired
 	private FuncionarioRepositorio funcionarioRepositorio;
+	@Autowired
+	private CidadeRepositorio cidadeRepositorio;
 	
 	@GetMapping("/administrativo/funcionarios/cadastrar") //vai ser editado e ser repassado para a visão que vai ser rederizada
 	public ModelAndView cadastrar(Funcionario funcionario) {
 		ModelAndView mv = new ModelAndView("administrativo/funcionarios/cadastro");
 		mv.addObject("funcionario",funcionario);
+		mv.addObject("listaCidades", cidadeRepositorio.findAll());
 		return mv;
 	}
 	
