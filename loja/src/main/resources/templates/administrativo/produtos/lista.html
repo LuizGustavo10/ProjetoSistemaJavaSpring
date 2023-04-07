@@ -37,6 +37,7 @@
 	                        <th>Nome</th>
 	                        <th>Quantidade</th>
 	                        <th>Valor De Venda</th>
+	                        <th>Imagem</th>
 	                        <th>Ação</th>
 	                    </tr>
 	                    </thead>
@@ -47,6 +48,8 @@
 	                        <td th:text="${produto.nome}"></td>
 	                        <td th:text="${produto.quantidadeEstoque}"></td>
 	                        <td th:text="${produto.valorVenda}"></td>
+	                        <td><img th:src="@{/administrativo/produtos/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}" width="100" style="border: 2px solid #A0A0A0; border-radius: 10px;" /></td>
+	                        <td></td>
  
 	                        
 	                        <td colspan="2">

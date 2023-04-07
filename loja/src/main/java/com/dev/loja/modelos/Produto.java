@@ -28,6 +28,9 @@ public class Produto implements Serializable{
 	private String categoria;
 	private String marca;
 	private Double quantidadeEstoque=0.;
+	private String nomeImagem;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -64,5 +67,12 @@ public class Produto implements Serializable{
 	public void setQuantidadeEstoque(Double quantidadeEstoque) {
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
+	}
+	
 	
 }	
