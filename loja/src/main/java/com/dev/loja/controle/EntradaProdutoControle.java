@@ -80,7 +80,7 @@ public class EntradaProdutoControle {
 			
 			for(ItemEntrada it : listaItemEntrada) {
 				it.setEntrada(entrada);
-				itemEntradaRepositorio.saveAndFlush(it);
+				itemEntradaRepositorio.saveAndFlush(it); 
 				
 				Optional<Produto> prod = produtoRepositorio.findById(it.getProduto().getId());
 				Produto produto = prod.get();
